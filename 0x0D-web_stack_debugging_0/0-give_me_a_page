@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
+#this command is used to reestar apache into our server, and after this,
+#we use the command curl to print the specified message
 
 sudo service apache 2 restart
