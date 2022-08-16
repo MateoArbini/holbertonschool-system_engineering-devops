@@ -6,10 +6,10 @@ if [ "$#" -lt 4 ]
 then
 	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 else
-	PATH_TO_FILE=$1
+	PATHFILE=$1
 	IP=$2
-	USERNAME=$3
-	PATH_TO_SSH_KEY=$4
+	USER=$3
+	PATHKEY=$4
 
-	scp -i ./$PATH_TO_SSH_KEY $PATH_TO_FILE $USERNAME@$IP:~/
+	scp -o StrictHostKeyChecking=no -i "$PATHKEY" "$PATHFILE" "$USER@$IP":~/
 fi
