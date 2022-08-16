@@ -3,8 +3,8 @@
 #delete everything that is inside the body, and the write "Hello World" inside
 
 sudo apt update
-sudo apt install nginx
+sudo apt-get -y install nginx
 cd /var/www/html
 sudo chmod 777 index.nginx-debian.html
-echo Hello World > index.nginx-debian.html
+echo Hello World! > index.nginx-debian.html
 sudo service nginx restart
