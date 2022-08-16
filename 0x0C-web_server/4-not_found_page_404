@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 # custom 404 error page message
-
 sudo apt update
 sudo apt-get -y install nginx
-sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/error-page.html
-sudo mkdir /etc/nginx/snippets/
-sudo vim /etc/nginx/snippets/custom-error-page.conf
-sudo echo "error_page 404 /error-page.html;
-	   location = /error-page.html {
-		   root /var/www/html;
-                   internal;
-}"
-sudo vim /etc/nginx/nginx.conf
-include snippets/custom-error-page.conf
+echo "Ceci n'est pas une page" > sudo tee /var/www/html/error-page.html
+error="error_page 404 /error-page.html; \nlocation = /error-page.html { \nroot /var/www/html; \ninternal;\n}"
+sudo sed -i "/server_name _/a $error" /etc/nginx/sites-available/default
 sudo service nginx restart
