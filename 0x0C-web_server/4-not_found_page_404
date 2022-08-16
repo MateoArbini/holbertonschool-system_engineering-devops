@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt-get -y install nginx
-sudo echo "Ceci n'est pas une page" > sudo vim /var/www/html/error-page.html
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/error-page.html
 sudo mkdir /etc/nginx/snippets/
 sudo vim /etc/nginx/snippets/custom-error-page.conf
 sudo echo "error_page 404 /error-page.html;
@@ -12,5 +12,5 @@ sudo echo "error_page 404 /error-page.html;
                    internal;
 }"
 sudo vim /etc/nginx/nginx.conf
-include snippets/custom-error-page.conf;
+include snippets/custom-error-page.conf
 sudo service nginx restart
