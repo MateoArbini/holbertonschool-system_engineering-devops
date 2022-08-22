@@ -7,9 +7,9 @@ exec {'update':
 }
 
 #Nginx Install
-package {'nginx':
-    ensure => installed,
-    name   => 'nginx',
+exec {'nginx':
+    command => sudo apt-get install -y nginx,
+    provider => shell,
 }
 
 #Trying to modify the header
@@ -18,11 +18,11 @@ file_line {'custom header':
     path   => '/etc/nginx/sites-available/default',
     after  => 'server_name _;',
     line   => '    location /{
-    add_header X-Served-By ${hostname}',
+    add_header X-Served-By \$HOSTNAME;',
     },
 }
 
 exec {'restart':
-    command  => 'sudo service restart nginx',
+    command  => 'sudo service nginx restart',
     provider => shell,
 }
