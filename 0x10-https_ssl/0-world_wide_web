@@ -24,6 +24,6 @@ printf "The subdomain web-02 "
 print-sub "web-02.$1"
 
 else
-	printf "The subdomain %2 " "$2"
+	printf "The subdomain %s " "$2"
 	print-sub "$2.$1"
 fi
