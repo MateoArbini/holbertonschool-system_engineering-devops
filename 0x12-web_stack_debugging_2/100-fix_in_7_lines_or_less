@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Same script as task 1 but for task 100
-sudo pkill apache2
-chmod 700 /etc/nginx/nginx.conf
-sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
-su nginx -c 'service nginx restart'
+chmod 777 /etc/nginx/nginx.conf
+sudo sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+sudo sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+pkill apache2
+sudo -u nginx service nginx restart
