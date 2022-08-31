@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Same script as task 1 but for task 100
+sudo pkill apache2
+chwon nginx /etc/nginx/nginx.conf
+sed -i "s /80/8080/ g" /etc/nginx/nginx.conf
+su nginx -c 'service nginx start'
