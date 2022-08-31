@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Script that changes username whoami
 
-su "$1" -c whoami
+su $1 -s /bin/bash -c whoami
