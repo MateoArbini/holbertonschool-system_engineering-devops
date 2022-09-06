@@ -19,6 +19,7 @@ from sys import argv
 if __name__ == "__main__":
     try:
         eID = argv[1]
+        filename = "{}.csv".format(eID)
         # Users is a DICTIONARY
         users = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                              .format(eID))
@@ -28,7 +29,7 @@ if __name__ == "__main__":
                          .format(eID))
         x = x.json()
         # quoting - Method that quotes all fields in an object
-        with open('USER_ID.csv', 'w') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             for field in x:
                 row = [users.get('id'), users.get('username'),
