@@ -23,14 +23,16 @@ if __name__ == "__main__":
     try:
         eID = argv[1]
         filename = "{}.json".format(eID)
-        users = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(eID))
-        tasks = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(eID))
+        users = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                             .format(eID))
+        x = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                         .format(eID))
         users = users.json()
-        tasks = tasks.json()
+        x = x.json()
         list_of_dicts = []
         final_dict = {}
 
-        for field in tasks:
+        for field in x:
             dictionary = {}
             dictionary["task"] = field['title']
             dictionary["completed"] = field['completed']
@@ -44,4 +46,3 @@ if __name__ == "__main__":
         f.close()
     except Exception as e:
         print(e)
-            
