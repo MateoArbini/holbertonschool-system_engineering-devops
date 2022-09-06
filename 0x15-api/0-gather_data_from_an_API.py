@@ -37,7 +37,7 @@ if __name__ == "__main__":
         x = x.json()
 
         # Here I get the total tasks and the total completed
-        for field in tasks:
+        for field in x:
             TOTAL_NUMBER_OF_TASKS += 1
             if field['completed'] is True:
                 NUMBER_OF_DONE_TASKS += 1
@@ -48,7 +48,7 @@ if __name__ == "__main__":
         print('Employee {} is done with tasks({}/{}):'
               .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS,
                       TOTAL_NUMBER_OF_TASKS))
-        for field in tasks:
+        for field in x:
             if field['title'] and field['completed'] is True:
                 print("\t  {}".format(field['title']))
 
