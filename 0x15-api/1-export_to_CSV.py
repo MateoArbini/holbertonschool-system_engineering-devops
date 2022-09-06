@@ -20,24 +20,20 @@ if __name__ == "__main__":
     try:
         eID = argv[1]
         # Users is a DICTIONARY
-        users = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(eID))
+        users = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                             .format(eID))
         users = users.json()
         # Tasks is a LIST
-        x = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'.format(eID))
+        x = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                         .format(eID))
         x = x.json()
-
-        # Here I will obtain the task name and the status
-        #for field in x:
-        #    print('"{}" - "{}"'.format(field['title'], field['completed']))
-        #for field in users:
-        #    print('"{}" - "{}"'.format(users.get('id'), users.get('username')))
 
         with open('USER_ID.csv', 'w') as f:
             writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             for field in x:
-                row = [users.get('id'), users.get('username'), field['completed'], field['title']]
+                row = [users.get('id'), users.get('username'),
+                       field['completed'], field['title']]
                 writer.writerow(row)
         f.close()
-                
     except Exception as e:
         print(e)
