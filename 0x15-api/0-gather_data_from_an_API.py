@@ -50,7 +50,7 @@ if __name__ == "__main__":
                       TOTAL_NUMBER_OF_TASKS))
         for field in x:
             if field['title'] and field['completed'] is True:
-                print("\t  {}".format(field['title']))
+                print("\t {}".format(field['title']))
 
     except Exeptions:
         print(Exceptions)
